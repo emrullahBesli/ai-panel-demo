@@ -1,0 +1,53 @@
+Entity: OrderUsage
+
+Purpose
+
+Stores AI resource usage.
+
+JPQL Entity Name
+
+OrderUsage
+
+Fields
+
+- id
+- usageDetails
+- costPrice
+- createdDate
+
+Relationships
+
+OneToOne
+
+field:
+order
+
+target:
+Order
+
+JPQL
+
+JOIN ou.order o
+
+Examples
+
+Costs
+
+SELECT SUM(ou.costPrice)
+FROM OrderUsage ou
+
+Net earnings
+
+SELECT
+u.username,
+SUM(o.paidAmount)-SUM(ou.costPrice)
+FROM User u
+JOIN u.orderList o
+JOIN o.orderUsageDetails ou
+GROUP BY u.username
+
+Never use
+
+orderItems
+orderUsage
+orderUsages

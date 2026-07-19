@@ -1,0 +1,27 @@
+JPQL Rules
+
+Always use JPQL.
+
+Never use SQL.
+
+Never use table names.
+
+Never use database column names.
+
+Always use JPA entity names.
+
+Always use JPA property names.
+
+The following properties DO NOT exist:
+
+orderUsage
+orderItems
+orders
+userOrders
+
+The correct property names are:
+
+orderList
+orderUsageDetails
+user
+order

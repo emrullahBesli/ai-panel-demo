@@ -1,0 +1,32 @@
+Business Metrics
+
+Revenue
+
+SUM(o.paidAmount)
+
+Expense
+
+SUM(ou.costPrice)
+
+Net Earnings
+
+SUM(o.paidAmount)-SUM(ou.costPrice)
+
+Revenue by User
+
+SELECT
+u.username,
+SUM(o.paidAmount)
+FROM User u
+JOIN u.orderList o
+GROUP BY u.username
+
+Net Earnings by User
+
+SELECT
+u.username,
+SUM(o.paidAmount)-SUM(ou.costPrice)
+FROM User u
+JOIN u.orderList o
+JOIN o.orderUsageDetails ou
+GROUP BY u.username

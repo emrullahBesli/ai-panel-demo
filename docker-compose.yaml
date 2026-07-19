@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: local-s3-minio
+    ports:
+      - "9000:9000" # S3 API Portu (Java buradan bağlanacak)
+      - "9001:9001" # Web Yönetim Paneli Portu
+    environment:
+      MINIO_ROOT_USER: admin_user
+      MINIO_ROOT_PASSWORD: admin_password123
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+
+volumes:
+  minio_data:

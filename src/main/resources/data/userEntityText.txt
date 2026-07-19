@@ -1,0 +1,53 @@
+Entity: User
+
+Purpose:
+Stores registered users.
+
+JPQL Entity Name:
+User
+
+Fields:
+- id (Long, Primary Key)
+- username (String)
+- email (String)
+- createdDate (LocalDateTime)
+
+Relationships:
+
+OneToMany
+
+field:
+orderList
+
+target entity:
+Order
+
+JPQL usage:
+
+SELECT u
+FROM User u
+JOIN u.orderList o
+
+Examples
+
+Get all users
+
+SELECT u
+FROM User u
+
+Get usernames
+
+SELECT u.username
+FROM User u
+
+Get users with orders
+
+SELECT u.username, o.paidAmount
+FROM User u
+JOIN u.orderList o
+
+Never use:
+
+orders
+userOrders
+orderItems

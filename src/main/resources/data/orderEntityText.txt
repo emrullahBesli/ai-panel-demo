@@ -1,0 +1,66 @@
+Entity: Order
+
+Purpose:
+Represents a customer's order.
+
+JPQL Entity Name:
+Order
+
+Fields
+
+- id
+- description
+- paidAmount
+- createdDate
+
+Relationships
+
+ManyToOne
+
+field:
+user
+
+target:
+User
+
+JPQL:
+
+JOIN o.user u
+
+OneToOne
+
+field:
+orderUsageDetails
+
+target:
+OrderUsage
+
+JPQL:
+
+JOIN o.orderUsageDetails ou
+
+Examples
+
+All orders
+
+SELECT o
+FROM Order o
+
+Revenue
+
+SELECT SUM(o.paidAmount)
+FROM Order o
+
+Revenue by user
+
+SELECT u.username,
+SUM(o.paidAmount)
+FROM User u
+JOIN u.orderList o
+GROUP BY u.username
+
+Never use
+
+orderItems
+orderUsage
+usage
