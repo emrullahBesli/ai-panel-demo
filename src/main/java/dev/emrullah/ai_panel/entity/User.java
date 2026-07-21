@@ -15,7 +15,7 @@ public class User extends BaseEntity {
     private String email;
 
     @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private List<Order> orderList = new ArrayList<>();
 
     public User() {

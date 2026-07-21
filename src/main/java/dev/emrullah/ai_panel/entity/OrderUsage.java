@@ -15,7 +15,7 @@ public class OrderUsage extends BaseEntity {
     @Column(name = "cost_price", precision = 10, scale = 2)
     private BigDecimal costPrice;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JsonManagedReference
     @JoinColumn(name = "order_id", unique = true)
     private Order order;
@@ -24,6 +24,7 @@ public class OrderUsage extends BaseEntity {
     }
 
     // Getters and Setters
+
 
     public String getUsageDetails() {
         return usageDetails;

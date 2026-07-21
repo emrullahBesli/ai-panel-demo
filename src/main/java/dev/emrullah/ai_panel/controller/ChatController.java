@@ -2,9 +2,8 @@ package dev.emrullah.ai_panel.controller;
 
 import dev.emrullah.ai_panel.model.AiPanelChatResponse;
 import dev.emrullah.ai_panel.service.ChatService;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +24,7 @@ public class ChatController {
 
     @GetMapping
     public ResponseEntity<AiPanelChatResponse> chat(
-            @RequestParam @NotNull @NotEmpty String userMessage
+            @RequestParam @NotNull @NotBlank String userMessage
     ) {
         return ResponseEntity.ok()
                 .body(chatService.chat(userMessage));
