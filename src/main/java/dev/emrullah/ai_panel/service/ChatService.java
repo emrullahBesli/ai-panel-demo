@@ -58,26 +58,7 @@ public class ChatService {
                     for calling toolSearchTool when the user requests database queries, data
                     retrieval, or file exports.
            
-                        IMPORTANT:
-                    
-                        Your final response MUST consist ONLY of a single valid JSON object.
-           
-                        Do not wrap it in markdown.
-                  
-                        Do not use ```json.
-                   
-                        Do not write explanations before the JSON.
-                    
-                        Do not write explanations after the JSON.
-                    
-                        Output exactly one JSON object.
-                    
-                        Example:
-                    
-                        {
-                          "chatResponse":"...",
-                          "downloadableContentUrl":null
-                        }
+                 
           
                     """)
                 // tool search advisor
@@ -109,7 +90,7 @@ public class ChatService {
                     .user(userMessage)
                     .advisors(advisorSpec -> advisorSpec.param(ChatMemory.CONVERSATION_ID, "default"))
                     .call()
-                    .entity(AiPanelChatResponse.class);
+                    .entity(AiPanelChatResponse.class, entityParamSpec -> entityParamSpec.useProviderStructuredOutput().validateSchema());
         } catch (Exception e) {
             logger.error("Error processing chat request", e);
             return new AiPanelChatResponse("An error occurred while generating the response: " + e.getMessage(), null);
